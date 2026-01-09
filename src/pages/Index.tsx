@@ -97,6 +97,33 @@ const Index = () => {
     }
   ];
 
+  const trophyBoostServices = [
+    {
+      range: '0-500 трофеев',
+      price: '320₽',
+      duration: '1-2 дня',
+      description: 'Быстрый старт',
+      color: 'from-green-500 to-emerald-400',
+      icon: 'TrendingUp'
+    },
+    {
+      range: '750-900 трофеев',
+      price: '140₽',
+      duration: '1 день',
+      description: 'Средний уровень',
+      color: 'from-blue-500 to-indigo-400',
+      icon: 'BarChart3'
+    },
+    {
+      range: '900-1000 трофеев',
+      price: '180₽',
+      duration: '1-2 дня',
+      description: 'До мастерства',
+      color: 'from-orange-500 to-red-400',
+      icon: 'Activity'
+    }
+  ];
+
   const testimonials = [
     {
       name: 'Алексей',
@@ -234,7 +261,54 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="reviews" className="py-20 px-4 bg-card/30">
+      <section className="py-20 px-4 bg-card/30">
+        <div className="container mx-auto">
+          <div className="text-center mb-12">
+            <h3 className="text-5xl font-bold mb-4 text-glow-cyan">БУСТ ТРОФЕЕВ</h3>
+            <p className="text-muted-foreground text-lg">Прокачка персонажа по трофеям</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+            {trophyBoostServices.map((service, index) => (
+              <Card 
+                key={index} 
+                className="border-border/50 bg-card hover:border-accent/50 transition-all hover:scale-105 hover:glow-green group"
+              >
+                <CardHeader>
+                  <div className={`w-16 h-16 rounded-full bg-gradient-to-r ${service.color} flex items-center justify-center mb-4 group-hover:animate-pulse-glow`}>
+                    <Icon name={service.icon as any} size={32} className="text-white" />
+                  </div>
+                  <CardTitle className="text-2xl">{service.range}</CardTitle>
+                  <CardDescription>{service.description}</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-3 mb-6">
+                    <div className="flex items-center gap-2">
+                      <Icon name="DollarSign" size={18} className="text-accent" />
+                      <span className="text-2xl font-bold text-primary">{service.price}</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-muted-foreground">
+                      <Icon name="Clock" size={18} />
+                      <span>{service.duration}</span>
+                    </div>
+                  </div>
+                  <Button 
+                    className="w-full glow-green bg-accent hover:bg-accent/90"
+                    onClick={() => {
+                      setSelectedService(service.range);
+                      setOrderOpen(true);
+                    }}
+                  >
+                    <Icon name="ShoppingCart" size={18} className="mr-2" />
+                    Заказать
+                  </Button>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="reviews" className="py-20 px-4">
         <div className="container mx-auto">
           <div className="text-center mb-12">
             <h3 className="text-5xl font-bold mb-4 text-glow-cyan">ОТЗЫВЫ КЛИЕНТОВ</h3>
