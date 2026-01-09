@@ -4,9 +4,23 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge';
 import Icon from '@/components/ui/icon';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+import { toast } from 'sonner';
 
 const Index = () => {
   const [chatOpen, setChatOpen] = useState(false);
+  const [orderOpen, setOrderOpen] = useState(false);
+  const [selectedService, setSelectedService] = useState('');
+  const [formData, setFormData] = useState({
+    currentRank: '',
+    targetRank: '',
+    email: '',
+    telegram: '',
+    paymentMethod: 'card'
+  });
 
   const boostServices = [
     {
@@ -179,7 +193,13 @@ const Index = () => {
                       <span>{service.duration}</span>
                     </div>
                   </div>
-                  <Button className="w-full glow-green bg-accent hover:bg-accent/90">
+                  <Button 
+                    className="w-full glow-green bg-accent hover:bg-accent/90"
+                    onClick={() => {
+                      setSelectedService(service.rank);
+                      setOrderOpen(true);
+                    }}
+                  >
                     <Icon name="ShoppingCart" size={18} className="mr-2" />
                     Заказать
                   </Button>
@@ -273,6 +293,132 @@ const Index = () => {
           </div>
         </div>
       </footer>
+
+      <Dialog open={orderOpen} onOpenChange={setOrderOpen}>
+        <DialogContent className="sm:max-w-lg">
+          <DialogHeader>
+            <DialogTitle className="flex items-center gap-2 text-2xl">
+              <Icon name="ShoppingCart" className="text-primary" />
+              Оформление заказа
+            </DialogTitle>
+            <DialogDescription>
+              {selectedService && `Выбрано: ${selectedService}`}
+            </DialogDescription>
+          </DialogHeader>
+          <form onSubmit={(e) => {
+            e.preventDefault();
+            toast.success('Заявка отправлена!', {
+              description: 'Мы свяжемся с вами в течение 5 минут'
+            });
+            setOrderOpen(false);
+          }} className="space-y-4">
+            <div className="space-y-2">
+              <Label htmlFor="currentRank">Текущий ранг</Label>
+              <Select value={formData.currentRank} onValueChange={(value) => setFormData({...formData, currentRank: value})}>
+                <SelectTrigger className="glow-cyan focus:glow-cyan">
+                  <SelectValue placeholder="Выберите текущий ранг" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="bronze">Bronze</SelectItem>
+                  <SelectItem value="silver">Silver</SelectItem>
+                  <SelectItem value="gold">Gold</SelectItem>
+                  <SelectItem value="diamond">Diamond</SelectItem>
+                  <SelectItem value="master">Master</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="targetRank">Желаемый ранг</Label>
+              <Select value={formData.targetRank} onValueChange={(value) => setFormData({...formData, targetRank: value})}>
+                <SelectTrigger className="glow-cyan focus:glow-cyan">
+                  <SelectValue placeholder="Выберите желаемый ранг" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="silver">Silver</SelectItem>
+                  <SelectItem value="gold">Gold</SelectItem>
+                  <SelectItem value="diamond">Diamond</SelectItem>
+                  <SelectItem value="master">Master</SelectItem>
+                  <SelectItem value="legend">Legend</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="email">Email</Label>
+              <Input 
+                id="email" 
+                type="email" 
+                placeholder="your@email.com"
+                value={formData.email}
+                onChange={(e) => setFormData({...formData, email: e.target.value})}
+                className="focus:border-primary"
+                required
+              />
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="telegram">Telegram (необязательно)</Label>
+              <Input 
+                id="telegram" 
+                placeholder="@username"
+                value={formData.telegram}
+                onChange={(e) => setFormData({...formData, telegram: e.target.value})}
+                className="focus:border-primary"
+              />
+            </div>
+
+            <div className="space-y-3">
+              <Label>Способ оплаты</Label>
+              <RadioGroup 
+                value={formData.paymentMethod} 
+                onValueChange={(value) => setFormData({...formData, paymentMethod: value})}
+              >
+                <div className="flex items-center space-x-2 p-3 border border-border rounded-lg hover:border-primary transition-colors cursor-pointer">
+                  <RadioGroupItem value="card" id="card" />
+                  <Label htmlFor="card" className="flex items-center gap-2 cursor-pointer flex-1">
+                    <Icon name="CreditCard" size={20} className="text-primary" />
+                    <div>
+                      <div className="font-semibold">Банковская карта</div>
+                      <div className="text-xs text-muted-foreground">Visa, MasterCard, Mir</div>
+                    </div>
+                  </Label>
+                </div>
+                <div className="flex items-center space-x-2 p-3 border border-border rounded-lg hover:border-secondary transition-colors cursor-pointer">
+                  <RadioGroupItem value="crypto" id="crypto" />
+                  <Label htmlFor="crypto" className="flex items-center gap-2 cursor-pointer flex-1">
+                    <Icon name="Bitcoin" size={20} className="text-secondary" />
+                    <div>
+                      <div className="font-semibold">Криптовалюта</div>
+                      <div className="text-xs text-muted-foreground">BTC, USDT, ETH</div>
+                    </div>
+                  </Label>
+                </div>
+                <div className="flex items-center space-x-2 p-3 border border-border rounded-lg hover:border-accent transition-colors cursor-pointer">
+                  <RadioGroupItem value="sbp" id="sbp" />
+                  <Label htmlFor="sbp" className="flex items-center gap-2 cursor-pointer flex-1">
+                    <Icon name="Smartphone" size={20} className="text-accent" />
+                    <div>
+                      <div className="font-semibold">СБП</div>
+                      <div className="text-xs text-muted-foreground">Система быстрых платежей</div>
+                    </div>
+                  </Label>
+                </div>
+              </RadioGroup>
+            </div>
+
+            <div className="flex gap-3 pt-4">
+              <Button type="button" variant="outline" className="flex-1" onClick={() => setOrderOpen(false)}>
+                Отмена
+              </Button>
+              <Button type="submit" className="flex-1 glow-cyan bg-primary hover:bg-primary/90">
+                <Icon name="CheckCircle" size={18} className="mr-2" />
+                Оформить заказ
+              </Button>
+            </div>
+          </form>
+        </DialogContent>
+      </Dialog>
 
       <Dialog open={chatOpen} onOpenChange={setChatOpen}>
         <DialogTrigger asChild>
