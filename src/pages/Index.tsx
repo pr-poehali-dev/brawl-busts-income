@@ -148,7 +148,7 @@ const Index = () => {
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Icon name="Zap" className="text-primary" size={32} />
-            <h1 className="text-2xl font-bold text-glow-cyan">BRAWL BOOST</h1>
+            <h1 className="text-2xl font-bold text-glow-cyan">FLOMIX SHOP</h1>
           </div>
           <nav className="hidden md:flex gap-6">
             <a href="#services" className="hover:text-primary transition-colors">Услуги</a>
@@ -304,7 +304,7 @@ const Index = () => {
         <div className="container mx-auto text-center">
           <div className="flex items-center justify-center gap-2 mb-4">
             <Icon name="Zap" className="text-primary" size={28} />
-            <h4 className="text-xl font-bold">BRAWL BOOST</h4>
+            <h4 className="text-xl font-bold">FLOMIX SHOP</h4>
           </div>
           <p className="text-muted-foreground mb-4">Профессиональный бустинг в Brawl Stars</p>
           <div className="flex gap-4 justify-center">
