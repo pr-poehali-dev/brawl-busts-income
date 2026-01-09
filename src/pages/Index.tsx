@@ -24,72 +24,96 @@ const Index = () => {
 
   const boostServices = [
     {
-      rank: 'Bronze → Silver',
-      price: '500₽',
-      duration: '1-2 дня',
-      description: 'Быстрый старт для новичков',
-      color: 'from-orange-600 to-orange-400',
-      icon: 'Trophy'
-    },
-    {
-      rank: 'Silver → Gold',
-      price: '1200₽',
+      rank: 'Алмаз I',
+      price: '1500₽',
       duration: '2-3 дня',
-      description: 'Уверенный подъём в рейтинге',
-      color: 'from-gray-400 to-gray-200',
-      icon: 'Award'
-    },
-    {
-      rank: 'Gold → Diamond',
-      price: '2500₽',
-      duration: '3-5 дней',
       description: 'Путь к элитным рангам',
-      color: 'from-yellow-500 to-yellow-300',
-      icon: 'Star'
+      color: 'from-cyan-400 to-blue-500',
+      icon: 'Gem'
     },
     {
-      rank: 'Diamond → Master',
-      price: '5000₽',
-      duration: '5-7 дней',
-      description: 'Попадание в топ игроков',
-      color: 'from-cyan-500 to-cyan-300',
+      rank: 'Алмаз II',
+      price: '2000₽',
+      duration: '3-4 дня',
+      description: 'Укрепление позиций',
+      color: 'from-cyan-500 to-blue-600',
+      icon: 'Gem'
+    },
+    {
+      rank: 'Алмаз III',
+      price: '2500₽',
+      duration: '4-5 дней',
+      description: 'Вершина алмаза',
+      color: 'from-cyan-600 to-blue-700',
+      icon: 'Gem'
+    },
+    {
+      rank: 'Мифик I',
+      price: '3500₽',
+      duration: '4-6 дней',
+      description: 'Мифический уровень',
+      color: 'from-purple-500 to-pink-500',
       icon: 'Crown'
     },
     {
-      rank: 'Master → Legend',
+      rank: 'Мифик II',
+      price: '5000₽',
+      duration: '5-7 дней',
+      description: 'Элита игроков',
+      color: 'from-purple-600 to-pink-600',
+      icon: 'Crown'
+    },
+    {
+      rank: 'Мифик III',
+      price: '7000₽',
+      duration: '6-8 дней',
+      description: 'Вершина мифика',
+      color: 'from-purple-700 to-pink-700',
+      icon: 'Crown'
+    },
+    {
+      rank: 'Легендарный I',
       price: '10000₽',
       duration: '7-10 дней',
       description: 'Легендарный статус',
-      color: 'from-purple-600 to-pink-500',
+      color: 'from-yellow-500 to-orange-500',
       icon: 'Zap'
     },
     {
-      rank: 'Калибровка',
-      price: '3000₽',
-      duration: '3-4 дня',
-      description: 'Лучший старт сезона',
-      color: 'from-green-500 to-emerald-400',
-      icon: 'Target'
+      rank: 'Легендарный II',
+      price: '15000₽',
+      duration: '10-14 дней',
+      description: 'Топ легенд',
+      color: 'from-yellow-600 to-orange-600',
+      icon: 'Zap'
+    },
+    {
+      rank: 'Легендарный III',
+      price: '20000₽',
+      duration: '14-20 дней',
+      description: 'Абсолютная вершина',
+      color: 'from-yellow-700 to-orange-700',
+      icon: 'Trophy'
     }
   ];
 
   const testimonials = [
     {
       name: 'Алексей',
-      rank: 'Legend',
-      text: 'Ребята прокачали меня с Gold до Legend за неделю! Играли профессионально, никаких проблем.',
+      rank: 'Легендарный II',
+      text: 'Ребята прокачали меня с Алмаза до Легендарного за 2 недели! Играли профессионально, никаких проблем.',
       rating: 5
     },
     {
       name: 'Дмитрий',
-      rank: 'Master',
+      rank: 'Мифик III',
       text: 'Быстро, качественно, без читов. Рекомендую всем, кто хочет сэкономить время.',
       rating: 5
     },
     {
       name: 'Игорь',
-      rank: 'Diamond',
-      text: 'Отличная команда! Поднялся с Bronze до Diamond, цены адекватные.',
+      rank: 'Алмаз III',
+      text: 'Отличная команда! Поднялся до Алмаза III, цены адекватные.',
       rating: 5
     }
   ];
@@ -97,21 +121,21 @@ const Index = () => {
   const boosters = [
     {
       name: 'ProGamer',
-      rank: 'Legend #1',
+      rank: 'Легендарный III',
       experience: '5 лет',
       winrate: '87%',
       avatar: '🎮'
     },
     {
       name: 'SkillMaster',
-      rank: 'Legend #3',
+      rank: 'Легендарный II',
       experience: '4 года',
       winrate: '85%',
       avatar: '⚡'
     },
     {
       name: 'RankBoost',
-      rank: 'Master #12',
+      rank: 'Мифик III',
       experience: '3 года',
       winrate: '82%',
       avatar: '🔥'
@@ -319,11 +343,14 @@ const Index = () => {
                   <SelectValue placeholder="Выберите текущий ранг" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="bronze">Bronze</SelectItem>
-                  <SelectItem value="silver">Silver</SelectItem>
-                  <SelectItem value="gold">Gold</SelectItem>
-                  <SelectItem value="diamond">Diamond</SelectItem>
-                  <SelectItem value="master">Master</SelectItem>
+                  <SelectItem value="diamond1">Алмаз I</SelectItem>
+                  <SelectItem value="diamond2">Алмаз II</SelectItem>
+                  <SelectItem value="diamond3">Алмаз III</SelectItem>
+                  <SelectItem value="mythic1">Мифик I</SelectItem>
+                  <SelectItem value="mythic2">Мифик II</SelectItem>
+                  <SelectItem value="mythic3">Мифик III</SelectItem>
+                  <SelectItem value="legend1">Легендарный I</SelectItem>
+                  <SelectItem value="legend2">Легендарный II</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -335,11 +362,14 @@ const Index = () => {
                   <SelectValue placeholder="Выберите желаемый ранг" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="silver">Silver</SelectItem>
-                  <SelectItem value="gold">Gold</SelectItem>
-                  <SelectItem value="diamond">Diamond</SelectItem>
-                  <SelectItem value="master">Master</SelectItem>
-                  <SelectItem value="legend">Legend</SelectItem>
+                  <SelectItem value="diamond2">Алмаз II</SelectItem>
+                  <SelectItem value="diamond3">Алмаз III</SelectItem>
+                  <SelectItem value="mythic1">Мифик I</SelectItem>
+                  <SelectItem value="mythic2">Мифик II</SelectItem>
+                  <SelectItem value="mythic3">Мифик III</SelectItem>
+                  <SelectItem value="legend1">Легендарный I</SelectItem>
+                  <SelectItem value="legend2">Легендарный II</SelectItem>
+                  <SelectItem value="legend3">Легендарный III</SelectItem>
                 </SelectContent>
               </Select>
             </div>
