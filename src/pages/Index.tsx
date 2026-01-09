@@ -25,7 +25,7 @@ const Index = () => {
   const boostServices = [
     {
       rank: 'Алмаз I',
-      price: '1500₽',
+      price: '300₽',
       duration: '2-3 дня',
       description: 'Путь к элитным рангам',
       color: 'from-cyan-400 to-blue-500',
@@ -33,7 +33,7 @@ const Index = () => {
     },
     {
       rank: 'Алмаз II',
-      price: '2000₽',
+      price: '300₽',
       duration: '3-4 дня',
       description: 'Укрепление позиций',
       color: 'from-cyan-500 to-blue-600',
@@ -41,7 +41,7 @@ const Index = () => {
     },
     {
       rank: 'Алмаз III',
-      price: '2500₽',
+      price: '300₽',
       duration: '4-5 дней',
       description: 'Вершина алмаза',
       color: 'from-cyan-600 to-blue-700',
@@ -49,7 +49,7 @@ const Index = () => {
     },
     {
       rank: 'Мифик I',
-      price: '3500₽',
+      price: '400₽',
       duration: '4-6 дней',
       description: 'Мифический уровень',
       color: 'from-purple-500 to-pink-500',
@@ -57,7 +57,7 @@ const Index = () => {
     },
     {
       rank: 'Мифик II',
-      price: '5000₽',
+      price: '400₽',
       duration: '5-7 дней',
       description: 'Элита игроков',
       color: 'from-purple-600 to-pink-600',
@@ -65,7 +65,7 @@ const Index = () => {
     },
     {
       rank: 'Мифик III',
-      price: '7000₽',
+      price: '400₽',
       duration: '6-8 дней',
       description: 'Вершина мифика',
       color: 'from-purple-700 to-pink-700',
@@ -73,7 +73,7 @@ const Index = () => {
     },
     {
       rank: 'Легендарный I',
-      price: '10000₽',
+      price: '670₽',
       duration: '7-10 дней',
       description: 'Легендарный статус',
       color: 'from-yellow-500 to-orange-500',
@@ -81,7 +81,7 @@ const Index = () => {
     },
     {
       rank: 'Легендарный II',
-      price: '15000₽',
+      price: '670₽',
       duration: '10-14 дней',
       description: 'Топ легенд',
       color: 'from-yellow-600 to-orange-600',
@@ -89,7 +89,7 @@ const Index = () => {
     },
     {
       rank: 'Легендарный III',
-      price: '20000₽',
+      price: '670₽',
       duration: '14-20 дней',
       description: 'Абсолютная вершина',
       color: 'from-yellow-700 to-orange-700',
